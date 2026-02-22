@@ -1,230 +1,222 @@
-📊 SubTrack — Subscription Management SaaS Web Application
+# 📊 SubTrack — Subscription Management SaaS Web Application
+
+SubTrack is a full-stack SaaS-style web application that enables users to manage recurring subscriptions, analyze spending patterns, and track renewal schedules in a clean, modern dashboard interface.
+
+This project demonstrates scalable frontend architecture, modular service design, secure authentication integration, and real-time analytics visualization.
+
+---
+
+## 🎯 Problem Statement
+
+Students and young professionals often underestimate recurring digital expenses and forget renewal dates. Most financial apps are overly complex or require direct bank integrations.
+
+SubTrack provides:
+
+- Centralized subscription tracking
+- Spending analytics dashboard
+- Renewal visibility
+- Clean SaaS-style UI
+
+Without requiring bank connections.
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- React (with TypeScript)
+- Vite (Build Tool)
+- Context API (State Management)
+- Tailwind CSS (Styling)
+- Supabase (Backend-as-a-Service)
+- Modular Service Layer (API abstraction)
+
+### Backend / Database
+- Supabase (PostgreSQL + Auth)
+- Row-Level Security (RLS)
+- Secure API interactions
+
+### Deployment
+- Vercel (Frontend Hosting)
+
+---
+
+## 📂 Project Structure
+
+```
+subtrack/
+│
+├── src/
+│   ├── components/              # Reusable UI Components
+│   │   ├── AppLayout.tsx
+│   │   ├── PublicLayout.tsx
+│   │   ├── SubscriptionModal.tsx
+│   │   └── UPIPaymentModal.tsx
+│   │
+│   ├── context/                 # Global State Management
+│   │   └── AppContext.tsx
+│   │
+│   ├── lib/                     # External integrations
+│   │   └── supabase.ts
+│   │
+│   ├── pages/                   # Route-based Pages
+│   │   ├── Analytics.tsx
+│   │   ├── Calendar.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── ForgotPassword.tsx
+│   │   ├── Landing.tsx
+│   │   ├── Login.tsx
+│   │   ├── Onboarding.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── Register.tsx
+│   │   ├── Reports.tsx
+│   │   ├── Settings.tsx
+│   │   └── Subscriptions.tsx
+│   │
+│   ├── services/                # API abstraction layer
+│   │   └── apiService.ts
+│   │
+│   ├── App.tsx                  # Root App Component
+│   ├── main.tsx                 # Application Entry
+│   └── index.css
+│
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
 
-SubTrack is a full-stack SaaS-style web application that enables users to manage recurring subscriptions, analyze monthly and annual spending, and receive automated renewal reminders.
+---
 
-The project demonstrates end-to-end product architecture, secure authentication, data visualization, background job scheduling, and optional AI-powered financial insights.
+## 🔐 Authentication & Security
 
-🎯 Problem Statement
+- Supabase Authentication
+- JWT-based session handling
+- Environment variable configuration
+- Secure API calls through service layer
+- Row-Level Security (RLS) policies
 
-Students and young professionals often underestimate recurring digital expenses and forget renewal dates. Existing financial apps are overly complex and bank-dependent.
+---
 
-SubTrack solves this by providing:
+## 📦 Core Features
 
-Centralized subscription tracking
+### Subscription Management
+- Add subscriptions
+- Edit subscription details
+- Delete subscriptions
+- Track renewal dates
+- Categorize subscriptions
 
-Real-time spending analytics
+### Dashboard Analytics
+- Monthly spending summary
+- Category-wise cost breakdown
+- Subscription status tracking
 
-Renewal notifications
+### Calendar View
+- Upcoming renewal visibility
+- Date-based subscription tracking
 
-AI-generated financial insights
+### Reports & Insights
+- Spending patterns
+- Subscription distribution
+- Cost projections
 
-All without requiring bank integrations.
+---
 
-🏗 Architecture Overview
+## 🧠 Architecture Highlights
 
-Frontend and backend are built as separate services following RESTful architecture principles.
+- Component-based UI architecture
+- Layout separation (Public vs App)
+- Centralized global state via Context API
+- Dedicated API service layer (`apiService.ts`)
+- Supabase abstraction via `lib/supabase.ts`
+- Clean route-based page structure
+- Scalable and maintainable folder organization
 
-Client (React) → REST API (Node.js/Express) → MongoDB
-                                  ↓
-                         Background Jobs (Cron)
-                                  ↓
-                          Email Notification Service
-🚀 Key Features
-🔐 Secure Authentication
+---
 
-JWT-based authentication
+## 🛠 Environment Setup
 
-Password hashing using bcrypt
+### 1️⃣ Clone Repository
 
-Protected API routes
+```bash
+git clone <your-repo-url>
+cd subtrack
+```
 
-Stateless session handling
+### 2️⃣ Install Dependencies
 
-📦 Subscription CRUD System
+```bash
+npm install
+```
 
-Add, edit, pause, delete subscriptions
+### 3️⃣ Configure Environment Variables
 
-Support for monthly, annual, and custom billing cycles
+Create:
 
-Automated renewal date calculations
+```
+.env.local
+```
 
-📊 Data Analytics Engine
+Add:
 
-Monthly spending trend aggregation
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
 
-Category-based cost distribution
+### 4️⃣ Run Development Server
 
-Annual cost projection
+```bash
+npm run dev
+```
 
-Dynamic dashboard summaries
+---
 
-🔔 Automated Reminder System
+## 🌐 Deployment
 
-Cron-based renewal checks
+Frontend deployed on **Vercel**
 
-Email reminders before billing date
+If using React Router, ensure `vercel.json` exists in root:
 
-Configurable reminder settings
-
-🤖 AI Integration (Optional Feature)
-
-AI-generated spending insights
-
-Natural-language subscription parsing
-
-Monthly financial summary generation
-
-🛠 Tech Stack
-Frontend
-
-React (Component-based architecture)
-
-Tailwind CSS (Utility-first styling)
-
-Recharts (Data visualization)
-
-Backend
-
-Node.js
-
-Express.js
-
-RESTful API design
-
-Database
-
-MongoDB (NoSQL document modeling)
-
-Indexed queries for efficient filtering
-
-Security
-
-JWT authentication
-
-bcrypt password hashing
-
-Input validation & sanitization
-
-Environment variable management
-
-DevOps / Deployment
-
-Frontend deployed on Vercel
-
-Backend deployed on Render
-
-Environment-based configuration
-
-📂 Project Structure
-server/
- ├── controllers/
- ├── routes/
- ├── models/
- ├── middleware/
- ├── services/
- └── jobs/
-
-client/
- ├── components/
- ├── layouts/
- ├── pages/
- ├── hooks/
- └── api/
-📡 Core API Endpoints
-
-Authentication:
-
-POST /api/auth/register
-
-POST /api/auth/login
-
-Subscriptions:
-
-GET /api/subscriptions
-
-POST /api/subscriptions
-
-PUT /api/subscriptions/:id
-
-DELETE /api/subscriptions/:id
-
-Analytics:
-
-GET /api/analytics/monthly-trend
-
-GET /api/analytics/category-breakdown
-
-Dashboard:
-
-GET /api/dashboard/summary
-
-AI:
-
-POST /api/ai/spending-insights
-
-🧠 Technical Highlights
-
-Modular MVC backend architecture
-
-Reusable UI component system
-
-Dynamic data aggregation queries
-
-Scalable API design
-
-Separation of concerns (controllers, services, jobs)
-
-Responsive SaaS dashboard layout
-
-Background job processing for notifications
-
-Clean error handling and middleware design
-
-📈 Scalability Considerations
-
-Stateless authentication for horizontal scaling
-
-Indexed MongoDB collections
-
-Background job isolation
-
-Service-based AI integration layer
-
-🧪 Example Data Model (Subscription)
+```json
 {
-  "userId": "ObjectId",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
+```
+
+---
+
+## 📊 Example Subscription Data Model
+
+```json
+{
   "name": "Netflix",
   "category": "Entertainment",
   "cost": 649,
   "billingCycle": "monthly",
-  "startDate": "2026-02-01",
   "nextRenewalDate": "2026-03-01",
   "status": "active"
 }
-🚫 Out of Scope (Intentional Design Decision)
+```
 
-Direct bank integrations
+---
 
-UPI linking
+## 💡 What This Project Demonstrates
 
-Payment gateway handling
+- Modern React + TypeScript architecture
+- Clean SaaS UI design
+- Context-based global state management
+- Supabase integration
+- REST-style service abstraction
+- Deployment configuration
+- Production-ready folder structure
 
-These were intentionally excluded to focus on clean system architecture rather than fintech compliance complexity.
+---
 
-💡 What This Project Demonstrates
+## 📄 License
 
-Full-stack system design
-
-REST API implementation
-
-Secure authentication flow
-
-Data aggregation logic
-
-Dashboard UI/UX engineering
-
-Background job scheduling
-
-AI feature integration
-
-Production-style folder structure
+This project is developed for educational and portfolio purposes.
